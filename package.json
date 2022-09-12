@@ -1,41 +1,42 @@
 {
-  "name": "drivenpass",
+  "name": "projeto19-drivenpass",
   "version": "1.0.0",
-  "main": "./src/index.ts",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.ts"
+    "start": "ts-node src/index.ts",
+    "dev": "nodemon src/index.ts"
   },
   "keywords": [],
   "dependencies": {
-    "@faker-js/faker": "^7.5.0",
+    "@prisma/client": "^4.3.1",
     "@types/bcrypt": "^5.0.0",
+    "@types/chalk": "^2.2.0",
     "@types/cors": "^2.8.12",
-    "@types/cryptr": "^4.0.1",
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.13",
     "@types/joi": "^17.2.3",
-    "@types/node": "^18.7.14",
-    "@types/nodemon": "^1.19.2",
+    "@types/jsonwebtoken": "^8.5.9",
     "@types/pg": "^8.6.5",
     "bcrypt": "^5.0.1",
+    "chalk": "^4.1.2",
     "cors": "^2.8.5",
     "cryptr": "^6.0.3",
-    "dayjs": "^1.11.4",
-    "dotenv": "^16.0.1",
+    "dotenv": "^16.0.2",
     "express": "^4.18.1",
     "express-async-errors": "^3.1.1",
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
-    "pg": "^8.7.3"
+    "pg": "^8.8.0"
   },
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
+    "@joi/date": "^2.1.0",
+    "@types/cryptr": "^4.0.1",
+    "@types/node": "^18.7.15",
+    "nodemon": "^2.0.19",
     "prisma": "^4.3.1",
     "ts-node": "^10.9.1",
     "typescript": "^4.8.2"
-  },
-  "description": ""
+  }
 }
