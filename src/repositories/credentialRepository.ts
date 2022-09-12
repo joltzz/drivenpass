@@ -1,4 +1,4 @@
-import { prisma } from "../dbStrategy/postgres";
+import { prisma } from "../db/postgres";
 import { TypeNewCredentialData } from "../types/credentialTypes";
 
 export async function createCredencial(credential: TypeNewCredentialData) {
