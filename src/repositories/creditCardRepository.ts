@@ -1,4 +1,4 @@
-import { prisma } from "../dbStrategy/postgres";
+import { prisma } from "../db/postgres";
 import { TypeNewCreditCardData } from "../types/creditCardTypes";
 
 export async function createCreditCard(card: TypeNewCreditCardData) {

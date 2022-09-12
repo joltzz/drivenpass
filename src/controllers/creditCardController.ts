@@ -3,7 +3,7 @@ import * as creditCardServices from '../services/creditCardService'
 
 export async function createCreditCard(req: Request, res: Response) {
   const { verifiedToken } = res.locals;
-  /* const { cardNumber, cardName, cvv, expirationDate, password, isVirtual, type, title  } = req.body;
+  const { cardNumber, cardName, cvv, expirationDate, password, isVirtual, type, title  } = req.body;
   let objectData = {
     userId: verifiedToken.id,
     cardNumber,
@@ -14,7 +14,7 @@ export async function createCreditCard(req: Request, res: Response) {
     isVirtual,
     type,
     title
-  }; */
+  };
 
   const data = req.body;
 
