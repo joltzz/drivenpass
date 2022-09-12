@@ -1,8 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-
-// banco não criado ainda
 generator client {
   provider = "prisma-client-js"
 }
@@ -10,4 +5,69 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model cards {
+  id             Int      @id(map: "cards_pk") @default(autoincrement())
+  userId         Int
+  cardNumber     String      @unique
+  cardName       String   @db.VarChar(255)
+  cvv            String
+  expirationDate String
+  password       String
+  isVirtual      Boolean
+  type           CardType
+  title          String   @db.VarChar(255)
+  users          users    @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "cards_fk0")
+}
+
+enum CardType {
+  credit
+  debit
+  both
+}
+
+model credentials {
+  id       Int    @id(map: "credentials_pk") @default(autoincrement())
+  userId   Int
+  url      String @db.VarChar(255)
+  username     String @db.VarChar(255)
+  password String @db.VarChar(255)
+  title    String @unique @db.VarChar(255)
+  users    users  @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "credentials_fk0")
+}
+
+model notes {
+  id     Int    @id(map: "notes_pk") @default(autoincrement())
+  userId Int
+  title  String @unique @db.VarChar(50)
+  note   String @db.VarChar(1000)
+  users  users  @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "notes_fk0")
+}
+
+model tokens {
+  id     Int    @id(map: "tokens_pk") @default(autoincrement())
+  userId Int
+  token  String @unique @db.VarChar(255)
+  users  users  @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "tokens_fk0")
+}
+
+model users {
+  id          Int           @id(map: "users_pk") @default(autoincrement())
+  email       String        @unique @db.VarChar(255)
+  password    String        @db.VarChar(255)
+  cards       cards[]
+  credentials credentials[]
+  notes       notes[]
+  tokens      tokens[]
+  wifis       wifis[]
+}
+
+model wifis {
+  id           Int    @id(map: "wifis_pk") @default(autoincrement())
+  title        String @unique @db.VarChar(255)
+  wifiName     String @db.VarChar(255)
+  wifiPassword String @db.VarChar(255)
+  userId       Int
+  users        users  @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "wifis_fk0")
 }
